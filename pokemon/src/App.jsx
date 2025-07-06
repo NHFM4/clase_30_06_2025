@@ -1,15 +1,30 @@
 
-import {useState} from 'react';
-import PokemonFetcher from './PokemonFetcher';
+import './App.css'
+import PokemonFetcher from './PokemonFetcher'
+
+let PLAYED = false;
+
+async function play() {
+  let music = await new Audio("https://us-tuna-sounds-files.voicemod.net/57b792a1-5d59-412a-8344-383f945f450c-1669658209316.mp3")
+  music.loop = true;
+
+  if (PLAYED) {
+    alert("Ya esta sonando beibi sana mi dolor uwu apagando ...")
+    window.location.href = "/"
+    return
+  }
+
+  PLAYED = true;
+  music.play();
+}
 
 function App() {
 
   return (
     <>
-      <h1>Conoce a los pokemones gen 2008</h1>
-      <input placeholder='xd'></input>
-      <img src='https://th.bing.com/th/id/R.4987833e24605ab43fa5c32b6e3d4db9?rik=2KKati7HvTAuDg&riu=http%3a%2f%2fmyrianjordan.weebly.com%2fuploads%2f4%2f5%2f7%2f4%2f45740779%2f1872297.jpg%3f505&ehk=i6DzzOJCQQL9MfoerrarzvP6EnuOnmh9azhbbGgSeWw%3d&risl=&pid=ImgRaw&r=0'></img>
-      <PokemonFetcher/>
+      <h1>Conoce a tus Pokémones, edicion 2008</h1>
+      <img src="https://s.13.cl/sites/default/files/inline-images/2021-04/pokemones.png" class="carol" onClick={play}></img>
+      <PokemonFetcher /> 
     </>
   )
 }
